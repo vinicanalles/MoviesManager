@@ -12,9 +12,9 @@ data class Movie(
     var name: String = "",
     var releaseYear: String = "",
     var producer: String = "",
-    var duration: Long = 0,
+    var duration: String = "",
     var watched: Int = MOVIE_WATCHED_FALSE,
-    var grade: Long = 0,
+    var grade: String = "",
     var gender: String = ""
 ) : Parcelable {
     companion object {

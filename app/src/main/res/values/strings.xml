@@ -11,4 +11,8 @@
     <string name="watched">Watched</string>
     <string name="add_movie">Add movie</string>
     <string name="save">Save</string>
+    <string name="remove_movie">Remove movie</string>
+    <string name="edit_movie">Edit movie</string>
+    <string name="movie_list">Movie List</string>
+    <string name="movie_details">Movie Details</string>
 </resources>
