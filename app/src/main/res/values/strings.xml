@@ -15,4 +15,6 @@
     <string name="edit_movie">Edit movie</string>
     <string name="movie_list">Movie List</string>
     <string name="movie_details">Movie Details</string>
+    <string name="ordenar_por_nome">Ordenar por nome</string>
+    <string name="ordenar_por_nota">Ordenar por nota</string>
 </resources>

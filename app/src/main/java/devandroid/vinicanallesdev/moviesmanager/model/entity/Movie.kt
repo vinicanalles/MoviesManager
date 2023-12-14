@@ -14,7 +14,7 @@ data class Movie(
     var producer: String = "",
     var duration: String = "",
     var watched: Int = MOVIE_WATCHED_FALSE,
-    var grade: String = "",
+    var grade: Double? = null,
     var gender: String = ""
 ) : Parcelable {
     companion object {

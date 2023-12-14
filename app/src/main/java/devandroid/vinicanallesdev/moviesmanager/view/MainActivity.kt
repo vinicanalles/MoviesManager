@@ -1,7 +1,7 @@
 package devandroid.vinicanallesdev.moviesmanager.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import devandroid.vinicanallesdev.moviesmanager.R
 import devandroid.vinicanallesdev.moviesmanager.databinding.ActivityMainBinding
 

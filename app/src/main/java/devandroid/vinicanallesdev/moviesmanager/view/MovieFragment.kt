@@ -45,7 +45,7 @@ class MovieFragment : Fragment() {
                 releaseYearEt.setText(movie.releaseYear)
                 producerEt.setText(movie.producer)
                 durationEt.setText(movie.duration)
-                gradeEt.setText(movie.grade)
+                if (movie.grade != null) gradeEt.setText(movie.grade.toString())
                 genderSp.setSelection(genders.indexOf(movie.gender))
                 watchedCb.isChecked = movie.watched == MOVIE_WATCHED_TRUE
 
@@ -72,7 +72,7 @@ class MovieFragment : Fragment() {
                             producerEt.text.toString(),
                             durationEt.text.toString(),
                             if (watchedCb.isChecked) MOVIE_WATCHED_TRUE else MOVIE_WATCHED_FALSE,
-                            gradeEt.text.toString(),
+                            if (gradeEt.text.toString().isEmpty()) null else gradeEt.text.toString().toDouble(),
                             genderSp.selectedItem.toString()
                         )
                     )

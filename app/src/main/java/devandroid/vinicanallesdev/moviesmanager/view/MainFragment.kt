@@ -3,15 +3,22 @@ package devandroid.vinicanallesdev.moviesmanager.view
 import android.app.Activity
 import android.os.Build
 import android.os.Bundle
+import android.view.ContextMenu
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.view.inputmethod.InputMethodManager.HIDE_NOT_ALWAYS
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -111,6 +118,36 @@ class MainFragment : Fragment(), OnMovieClickListener {
         }
 
         return fmb.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val menuHost: MenuHost = requireActivity()
+
+        menuHost.addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menuInflater.inflate(R.menu.menu_main, menu)
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                return when (menuItem.itemId) {
+                    R.id.actionSortByName -> {
+                        movieList.sortBy { it.name }
+                        movieAdapter.notifyDataSetChanged()
+                        true
+                    }
+
+                    R.id.actionSortByGrade -> {
+                        movieList.sortByDescending { it.grade }
+                        movieAdapter.notifyDataSetChanged()
+                        true
+                    }
+
+                    else -> false
+                }
+            }
+        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
     }
 
     override fun onMovieClick(position: Int) = navigateToMovieFragment(position, false)

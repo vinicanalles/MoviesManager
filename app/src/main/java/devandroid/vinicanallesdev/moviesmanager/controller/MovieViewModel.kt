@@ -19,6 +19,7 @@ class MovieViewModel(application: Application): ViewModel() {
         application.applicationContext,
         MoviesManagerDatabase::class.java,
         MoviesManagerDatabase.MOVIES_MANAGER_DATABASE)
+        .fallbackToDestructiveMigration()
         .build().getMovieDao()
 
     val moviesMld = MutableLiveData<List<Movie>>()
