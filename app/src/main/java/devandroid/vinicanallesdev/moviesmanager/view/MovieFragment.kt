@@ -1,13 +1,14 @@
 package devandroid.vinicanallesdev.moviesmanager.view
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResult
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -67,12 +68,27 @@ class MovieFragment : Fragment() {
                 setFragmentResult(MOVIE_FRAGMENT_REQUEST_KEY, Bundle().apply {
                     putParcelable(
                         EXTRA_MOVIE, Movie(
+                            0,
                             nameEt.text.toString(),
                             releaseYearEt.text.toString(),
                             producerEt.text.toString(),
                             durationEt.text.toString(),
                             if (watchedCb.isChecked) MOVIE_WATCHED_TRUE else MOVIE_WATCHED_FALSE,
-                            if (gradeEt.text.toString().isEmpty()) null else gradeEt.text.toString().toDouble(),
+                            if (gradeEt.text.toString().isEmpty()) {
+                                null
+                            } else {
+                                val grade = gradeEt.text.toString().toDouble()
+                                if (grade in 0.0..10.0) {
+                                    grade
+                                } else {
+                                    Toast.makeText(
+                                        requireContext(),
+                                        getString(R.string.nota_invalida),
+                                        Toast.LENGTH_LONG
+                                    ).show()
+                                    null
+                                }
+                            },
                             genderSp.selectedItem.toString()
                         )
                     )

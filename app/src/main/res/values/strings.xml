@@ -17,4 +17,5 @@
     <string name="movie_details">Movie Details</string>
     <string name="ordenar_por_nome">Ordenar por nome</string>
     <string name="ordenar_por_nota">Ordenar por nota</string>
+    <string name="nota_invalida">Nota inválida, deve ser digitada uma nota entre 0.0 e 10.0</string>
 </resources>

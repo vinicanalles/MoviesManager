@@ -2,20 +2,22 @@ package devandroid.vinicanallesdev.moviesmanager.model.entity
 
 import android.os.Parcelable
 import androidx.room.Entity
+import androidx.room.Index
 import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-@Entity
+@Entity(indices = [Index(value = ["name"], unique = true)])
 data class Movie(
-    @PrimaryKey
-    var name: String = "",
-    var releaseYear: String = "",
-    var producer: String = "",
-    var duration: String = "",
-    var watched: Int = MOVIE_WATCHED_FALSE,
-    var grade: Double? = null,
-    var gender: String = ""
+    @PrimaryKey(autoGenerate = true)
+    val id: Int,
+    val name: String,
+    val releaseYear: String,
+    val producer: String,
+    val duration: String,
+    var watched: Int,
+    val grade: Double?,
+    val gender: String
 ) : Parcelable {
     companion object {
         const val MOVIE_WATCHED_TRUE = 1
