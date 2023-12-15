@@ -34,7 +34,7 @@ class MovieFragment : Fragment() {
 
         fmb = FragmentMovieBinding.inflate(inflater, container, false)
 
-        val genders = arrayOf("Comédia", "Ação", "Terror", "Suspense")
+        val genders = arrayOf("Comédia", "Ação", "Terror", "Suspense", "Aventura", "Ficção Científica")
         val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, genders)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         fmb.genderSp.adapter = adapter
